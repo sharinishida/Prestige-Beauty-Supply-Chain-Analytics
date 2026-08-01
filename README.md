@@ -66,21 +66,21 @@ prestige-beauty-supply-chain/
 ├── notebooks/
 │   ├── README.md
 │   └── eda_analysis.py
+├── data/
+│   └── data_source_manifest.txt
 ├── sql_scripts/
 │   ├── README.md
 │   └── supply_chain_analysis.sql
 └── dashboards/
     ├── wireframe_eda_colors.svg
-    ├── wireframe_eda_colors.png
-    └── eda_charts/
-        ├── chart1_defect_rate.png
-        ├── chart2_margin.png
-        ├── chart3_lead_time_variance.png
-        ├── chart4_transport.png
-        ├── chart5_inspection.png
-        ├── chart6_review_velocity.png
-        ├── chart7_exclusivity_rating.png
-        └── chart8_stock_scatter.png
+    ├── chart1_defect_rate.png
+    ├── chart2_margin.png
+    ├── chart3_lead_time_variance.png
+    ├── chart4_transport.png
+    ├── chart5_inspection.png
+    ├── chart6_review_velocity.png
+    ├── chart7_exclusivity_rating.png
+    └── chart8_stock_scatter.png
 ```
 
 ## Deliverable Status
