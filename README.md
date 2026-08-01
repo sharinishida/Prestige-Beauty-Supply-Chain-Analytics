@@ -2,61 +2,51 @@
 ### An Enterprise Systems Integration Case Study
 
 **Author:** Shari Nishida  
-**Program:** Correlation One Data Analytics  
 **Industry Focus:** Prestige Beauty — Luxury CPG Supply Chain Analytics
 
 ---
 
-## Executive Overview
 
-In the prestige beauty sector, high gross profit margins (70–80%) are highly vulnerable to macro trade penalties, cross-border tariff fluctuations, and single-source vendor failures. This project establishes an analytical scenario-modeling framework that integrates **1.09 million rows of consumer demand sentiment data (Sephora)** with **upstream operational logistics logs** to insulate luxury margins and optimize safety stock configurations.
+How can a prestige beauty brand transition from a vulnerable, single-factory sourcing matrix to a resilient, multi-supplier network without diluting its retail gross margins?
 
-This case study serves as an analytical proof-of-concept for modernizing enterprise data environments, demonstrating how external data signals can calibrate master data views across core corporate systems:
+This project builds an integrated scenario-modeling framework connecting supplier quality risk, tariff-driven cost exposure, and consumer demand signals. Each finding is then mapped to the enterprise system (ERP, WMS, or S&OP tooling) a real organization would use to act on it.
 
-- **ERP (SAP S/4HANA):** Calibrating Costing Views via a dynamic, engineered Tariff Impact Coefficient.
-- **WMS (Manhattan Active):** Dynamically updating Reorder Points (ROP) based on lead-time variances.
-- **S&OP Planning (Anaplan / o9 Solutions):** Transforming historical text reviews into forward-looking demand-sensing signals.
+**Scope note:** the primary operational dataset contains 100 SKUs. This analysis is intentionally directional. It demonstrates methodology and relative risk ranking, not a statistically generalizable forecast.
 
----
+## Datasets
+
+| Dataset | Source | Details |
+|---|---|---|
+| Supply Chain Analysis Dataset | [Kaggle](https://www.kaggle.com/datasets/harshsingh2209/supply-chain-analysis) | 100 rows, 24 columns, 20.6 KB |
+| Sephora Products and Skincare Reviews: Catalog | [Kaggle](https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews) | `product_info.csv`, 8,494 rows, 27 columns |
+| Sephora Products and Skincare Reviews: Reviews | Same source above | `reviews_0-250.csv` through `reviews_1250-end.csv`, 1,094,411 rows combined |
+
+> **Note:** The five review files combined total 496.9 MB and exceed GitHub's 100 MB per-file limit. Do not commit these files to the repository. Download them directly from Kaggle and place them in the project root directory locally. `supply_chain_data.csv` (20.6 KB) and `product_info.csv` (7.5 MB) are both small enough to commit directly if you want the repo to run without a separate Kaggle download.
+
+> **Data limitation (discovered during dashboard build):** every `product_id` in the reviews files maps exclusively to the Skincare category. There is zero overlap with Makeup or Hair. All review-based findings in this project (review velocity, price-tier growth) are therefore skincare-scoped, not portfolio-wide. This is disclosed on the datafolio, the dashboard, and in the final report.
+
+## Key Findings
+
+- **Supplier 4 carries a 66.7% inspection failure rate.** This is the single largest quality-concentration risk in the portfolio and the top priority for dual-sourcing.
+- **Quality risk and tariff risk are independent dimensions.** Haircare has zero tariff exposure but the highest defect rate (2.48%) of any category.
+- **Skincare is the highest-priority category for resilience investment.** It has the lowest stock-to-sales ratio (0.13), the most stockout-risk SKUs, the highest Sephora rating (4.31), and a 10% tariff premium.
+- **Consumer review velocity is a validated leading demand signal**, within its skincare-only scope. Review volume grew 6.5x between 2015 and 2020.
+- **Near-shoring can reduce both cost and lead time simultaneously** in this portfolio. Sea routes are both the cheapest and fastest transportation mode observed.
 
 ## Technical Stack
 
-Unlike standard visualization portfolios, this project is backed by **20+ years of professional ERP configuration, SQL database tuning, and technology consulting experience**. It bridges the gap between frontline e-commerce fulfillment data and backend server table architecture.
+- **Python** (pandas, numpy, matplotlib, scipy), used for data profiling, cleaning, and EDA
+- **SQL**, used for the relational schema and the category-based tariff proxy logic
+- **Tableau Public**, used to build the three-tab interactive dashboard
 
-- **Database Engineering:** SQLite, Data Curation, Relational Joins, and Production Table Remediation.
-- **Advanced Analytics & Programming:** Python (Pandas, NumPy, SciPy) for automated pipeline wrangling and outlier risk modeling.
-- **Business Intelligence:** Interactive Tableau / Power BI executive datafolios built for C-suite S&OP decision-making.
+## Live Dashboard
 
----
+[Tableau Public: Supply Chain Resiliency & Margin Protection](https://public.tableau.com/app/profile/shari.nishida/viz/CorrelationOneDataAnalyticsCapstone/ExecutiveSOPRiskMatrix?publish=yes)
 
-## Key Analytical Breakthroughs (EDA Phase)
-
-1. **Systemic Quality Constraints:** Disproved the core industry hypothesis by revealing that quality risk (Haircare at 2.48% defect rate) and tariff risk (Cosmetics) are completely independent dimensions, requiring dual-track mitigation.
-2. **Critical Sourcing Vulnerabilities:** Isolated an anonymized manufacturing node (Supplier 4) operating at a catastrophic **66.7% inspection failure rate** with zero passed batches, identifying the primary candidate for near-shore diversification.
-3. **Logistics Bottleneck Anomalies:** Identified a major 9.9-day lead-time planning variance, revealing that expensive Air freight counterintuitively incurred the longest delivery delays (18.27 days) due to outbound distribution recording structures.
-4. **Demand-Sensing Validation:** Proved a 6.5x surge in consumer review velocity preceding retail stockout events, providing an actionable 30-day advance warning window for warehouse stock adjustments.
-
----
-
-## Datasets Used
-
-| File | Source |
-|---|---|
-| `supply_chain_data.csv` | [Supply Chain Analysis Dataset](https://www.kaggle.com/datasets/harshsingh2209/supply-chain-analysis) |
-| `product_info.csv` | [Sephora Products & Reviews](https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews) |
-| `reviews_0-250.csv` | Same source above |
-| `reviews_250-500.csv` | Same source above |
-| `reviews_500-750.csv` | Same source above |
-| `reviews_750-1250.csv` | Same source above |
-| `reviews_1250-end.csv` | Same source above |
-| USTR Section 301 Tariff Schedules | [USTR.gov](https://ustr.gov/issue-areas/enforcement/section-301-investigations/section-301-china/tariff-actions) |
-| EU Commission MFN Tariffs, HS Chapter 33 | [EC.Europa.eu](https://taxation-customs.ec.europa.eu/customs-4/calculation-customs-duties/customs-tariff_en) |
-
-> **Note:** The five review files combined total 496.9 MB and exceed GitHub's 100 MB per-file limit. Do not commit these files to the repository. Download them directly from Kaggle and place them in the project root directory locally. A `.gitignore` entry is recommended.
->
-> `supply_chain_data.csv` (20.6 KB) and `product_info.csv` (7.5 MB) are small enough to commit directly to GitHub if you choose to include the primary datasets in the repository.
-
----
+Three tabs, each scoped to a specific enterprise stakeholder:
+1. **Executive S&OP Risk Matrix** (Supply Chain Director view)
+2. **Margin Compression & Simulation** (CFO view)
+3. **Omnichannel Inventory & WMS Calibration** (Warehouse Operations view)
 
 ## Repository Structure
 
@@ -69,70 +59,60 @@ prestige-beauty-supply-chain/
 │   ├── Project_Description_Shari_Nishida.pdf
 │   ├── Project_Scope_Shari_Nishida.pdf
 │   ├── Data_Curation_Shari_Nishida.pdf
-│   └── EDA_Shari_Nishida.pdf
+│   ├── EDA_Shari_Nishida.pdf
+│   ├── Datafolio_Shari_Nishida.pdf
+│   ├── Dashboard_Submission_Shari_Nishida.pdf
+│   └── Final_Report_Shari_Nishida.pdf
 ├── notebooks/
 │   ├── README.md
 │   └── eda_analysis.py
 ├── sql_scripts/
 │   ├── README.md
 │   └── supply_chain_analysis.sql
-├── dashboards/
-│   ├── wireframe_eda_colors.png
-│   ├── chart1_defect_rate.png
-│   ├── chart2_margin.png
-│   ├── chart3_lead_time_variance.png
-│   ├── chart4_transport.png
-│   ├── chart5_inspection.png
-│   ├── chart6_review_velocity.png
-│   ├── chart7_exclusivity_rating.png
-│   └── chart8_stock_scatter.png
+└── dashboards/
+    ├── wireframe_eda_colors.svg
+    ├── wireframe_eda_colors.png
+    └── eda_charts/
+        ├── chart1_defect_rate.png
+        ├── chart2_margin.png
+        ├── chart3_lead_time_variance.png
+        ├── chart4_transport.png
+        ├── chart5_inspection.png
+        ├── chart6_review_velocity.png
+        ├── chart7_exclusivity_rating.png
+        └── chart8_stock_scatter.png
 ```
 
----
+## Deliverable Status
+
+| Deliverable | Status |
+|---|---|
+| Project Description & Scoping | ✅ Complete |
+| Data Curation | ✅ Complete |
+| Exploratory Data Analysis (EDA) | ✅ Complete |
+| Datafolio | ✅ Complete |
+| Dashboard (Tableau Public) | ✅ Complete (3 tabs live) |
+| Final Report | ✅ Complete |
 
 ## How to Run
 
-### Prerequisites
+**Prerequisites:** Python 3.9+, `pip install -r requirements.txt`
 
-Python 3.8 or higher is required. Install all dependencies using the requirements file:
+**Dataset setup:**
+1. Download `supply_chain_data.csv` from the Kaggle link above, or use the copy in this repo if included.
+2. Download the Sephora `product_info.csv` and the five `reviews_*.csv` files from Kaggle. Place all files in the project root directory. Do **not** commit the review files to GitHub (see note above).
 
-```bash
-pip install -r requirements.txt
+**Run the Python analysis:**
 ```
-
-### Dataset Setup
-
-Download the datasets listed above from Kaggle and place them in the project root directory before running any scripts.
-
-### Run EDA Analysis (Python)
-
-```bash
+cd notebooks
 python eda_analysis.py
 ```
 
-Charts will be saved to the `eda_charts/` directory.
-
-### Run SQL Pipeline
-
-The SQL script is written in standard ANSI SQL and is compatible with SQLite, PostgreSQL, and MySQL.
-
-```bash
-# SQLite example
-sqlite3 prestige_beauty.db < sql_scripts/supply_chain_analysis.sql
+**Run the SQL script** (example using SQLite):
+```
+sqlite3 supply_chain.db < sql_scripts/supply_chain_analysis.sql
 ```
 
----
-
-## Requirements
-
-See `requirements.txt` for the full dependency list:
-
-```
-pandas>=1.5.0
-numpy>=1.23.0
-matplotlib>=3.6.0
-scipy>=1.9.0
-```
 
 ---
 
@@ -140,5 +120,5 @@ scipy>=1.9.0
 
 Managing Director, NexGen Consulting, LLC. Specializing in business transformation, legacy system modernization, and data governance across Fortune 500 clients and government agencies. This project combines 20+ years of enterprise ERP configuration and supply chain consulting with modern cloud analytics to demonstrate how external data signals can drive real-time decision-making across global supply networks.
 
-- **Core Strengths:** Strategy, Digital Transformation, ERP Integration, and Executive Advising.
-- **Certifications:** PMP, PMI-ACP, CSM, Oracle Cloud AI.
+- **Core Strengths:** Strategy, Digital Transformation, ERP Integration, and Executive Advising
+- **Certifications:** PMP, PMI-ACP, CSM, Oracle Cloud, AI
