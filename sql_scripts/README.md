@@ -1,6 +1,7 @@
 # SQL Scripts: Database Methodology
 
-**Author:** Shari Nishida  
+**Project:** Supply Chain Resiliency & Margin Protection in Prestige Beauty  
+**Author:** Shari Nishida   
 **Dialect:** Standard ANSI SQL (compatible with SQLite, PostgreSQL, MySQL)
 
 ---
