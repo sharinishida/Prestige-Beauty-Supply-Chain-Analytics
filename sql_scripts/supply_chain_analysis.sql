@@ -1,8 +1,8 @@
 -- ============================================================
 -- Supply Chain Resiliency & Margin Protection in Prestige Beauty
 -- SQL Data Wrangling & Tariff Impact Coefficient Pipeline
--- Author: Shari Nishida
--- Program: Correlation One Data Analytics
+-- Author: Shari Nishida  | Managing Director, NexGen Consulting, LLC    
+
 -- ============================================================
 
 
