@@ -2,7 +2,7 @@
 
 **Project:** Supply Chain Resiliency & Margin Protection in Prestige Beauty  
 **Domain:** Prestige Beauty & Luxury CPG Supply Chain Analytics  
-**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC    
+**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC  
 **Dialect:** Standard ANSI SQL (compatible with SQLite, PostgreSQL, MySQL)
 
 ---
@@ -39,7 +39,7 @@ This matters analytically, not just stylistically. The two lead time fields, `su
 
 ### 2. Tariff Impact Coefficient: CASE WHEN Logic
 
-The primary dataset restricts geographic metadata to five Indian manufacturing cities, preventing a direct join with international tariff schedules. To model 2026 trade conditions without fabricating data, a Structural Attribute Proxy Strategy maps tariff penalties to `product_type` rather than location:
+The primary dataset restricts geographic metadata to five anonymized domestic manufacturing hubs, preventing a direct join with international tariff schedules. To model 2026 trade conditions without fabricating data, a Structural Attribute Proxy Strategy maps tariff penalties to `product_type` rather than location:
 
 ```sql
 tariff_impact_coefficient = CASE
@@ -105,12 +105,6 @@ The cross-dataset summary query joins supply chain risk metrics with Sephora dem
 
 ---
 
-### 6. Tariff Sensitivity Scenario Query
-
-A stress-test query models the gross margin impact if EU skincare tariffs double from 10% to 20%. This is the SQL equivalent of the Tableau tariff sensitivity slider. The same parameter logic is expressed as a set-based query rather than a dashboard control.
-
----
-
 ## How to Run
 
 ```bash
@@ -133,3 +127,9 @@ The view outputs are structured to map directly to enterprise system parameters:
 - `v_tariff_margin_analysis` → SAP S/4HANA Costing View inputs
 - `v_stockout_risk` → Manhattan Active WMS Reorder Point (ROP) parameters
 - `v_lead_time_variance` + `v_inspection_by_supplier` → Anaplan/o9 Solutions S&OP planning parameters
+
+---
+
+## Potential Future Enhancements
+
+- A tariff sensitivity stress-test query modeling the gross margin impact of a hypothetical increase in EU skincare tariffs, the SQL equivalent of a dynamic what-if scenario tool, as a set-based query rather than a live dashboard control
