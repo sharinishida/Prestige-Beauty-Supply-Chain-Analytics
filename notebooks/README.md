@@ -2,7 +2,7 @@
 
 **Project:** Supply Chain Resiliency & Margin Protection in Prestige Beauty  
 **Domain:** Prestige Beauty & Luxury CPG Supply Chain Analytics  
-**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC    
+**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC  
 **Libraries:** pandas, numpy, matplotlib, scipy
 
 ---
@@ -97,7 +97,7 @@ LGREY = '#D8D0C4'   # Grid lines, borders, tertiary category
 | Lead Time Variance | `chart3_lead_time_variance.png` | Histogram showing distribution across 100 SKUs |
 | Transport Mode Trade-Off | `chart4_transport.png` | Dual-axis bar and line chart showing cost vs. lead time |
 | Inspection by Supplier | `chart5_inspection.png` | Stacked bar showing Pass/Fail/Pending by vendor |
-| Review Velocity 2010–2023 | `chart6_review_velocity.png` | Area/line chart showing Sephora review volume trend |
+| Review Velocity 2010 to 2023 | `chart6_review_velocity.png` | Area/line chart showing Sephora review volume trend |
 | Rating by Exclusivity Tier | `chart7_exclusivity_rating.png` | Side-by-side box plots |
 | Stock vs. Units Sold | `chart8_stock_scatter.png` | Scatter plot showing stockout risk zone mapping |
 
@@ -119,7 +119,7 @@ All values derived from actual data execution:
 | Total consumer reviews | 1,094,411 |
 | Review date range | August 2008 to March 2023 |
 | Peak review year | 2020 (125,824 reviews) |
-| Review velocity growth 2015–2020 | 6.5x |
+| Review velocity growth 2015 to 2020 | 6.5x |
 
 ---
 
@@ -154,9 +154,7 @@ Charts are saved to `eda_charts/`. Console output displays all key statistical f
 
 ---
 
-## Planned Notebook Additions
-
-The following analyses are planned for the EDA and dashboard milestones:
+## Potential Future Enhancements
 
 - Jupyter Notebook version of `eda_analysis.py` with inline chart rendering
 - scipy-based optimization model for dual-sourcing volume split scenarios
