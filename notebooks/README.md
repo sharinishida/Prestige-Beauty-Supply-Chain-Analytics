@@ -1,7 +1,8 @@
 # Python Data Mining Pipeline
 
 **Project:** Supply Chain Resiliency & Margin Protection in Prestige Beauty  
-**Author:** Shari Nishida  
+**Domain:** Prestige Beauty & Luxury CPG Supply Chain Analytics  
+**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC    
 **Libraries:** pandas, numpy, matplotlib, scipy
 
 ---
