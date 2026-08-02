@@ -9,7 +9,7 @@
 
 ## Overview
 
-The SQL pipeline handles three primary tasks: data normalization and schema standardization, feature engineering including the Tariff Impact Coefficient, and analytical view creation for downstream visualization in Tableau and Power BI.
+The SQL pipeline handles three primary tasks: data normalization and schema standardization, feature engineering including the Tariff Impact Coefficient, and analytical view creation for downstream visualization in Tableau.
 
 ---
 
