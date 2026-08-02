@@ -1,8 +1,9 @@
 # Supply Chain Resiliency & Margin Protection in Prestige Beauty
 ### An Enterprise Systems Integration Case Study
 
-**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC
-**Domain:** Prestige Beauty & Luxury CPG Supply Chain Analytics
+**Project:** Supply Chain Resiliency & Margin Protection in Prestige Beauty  
+**Domain:** Prestige Beauty & Luxury CPG Supply Chain Analytics  
+**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC    
 **Primary Assets:** [Executive Notion Hub](https://shari-nishida.notion.site) | [Tableau Public Dashboard](https://public.tableau.com/app/profile/shari.nishida/viz/CorrelationOneDataAnalyticsCapstone/ExecutiveSOPRiskMatrix?publish=yes)
 
 ---
