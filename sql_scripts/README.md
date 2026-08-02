@@ -1,7 +1,8 @@
 # SQL Scripts: Database Methodology
 
 **Project:** Supply Chain Resiliency & Margin Protection in Prestige Beauty  
-**Author:** Shari Nishida   
+**Domain:** Prestige Beauty & Luxury CPG Supply Chain Analytics  
+**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC    
 **Dialect:** Standard ANSI SQL (compatible with SQLite, PostgreSQL, MySQL)
 
 ---
