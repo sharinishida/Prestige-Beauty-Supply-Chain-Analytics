@@ -1,7 +1,6 @@
 ================================================================================
 ENTERPRISE DATA SOURCE MANIFEST & SCHEMA ARCHITECTURE
 Project: Supply Chain Resiliency & Margin Protection in Prestige Beauty
-Framework: Correlation One Data Analytics Capstone Portfolio
 ================================================================================
 
 1. PRIMARY TRANSACTIONAL DATASET: UPSTREAM SUPPLY CHAIN & LOGISTICS
