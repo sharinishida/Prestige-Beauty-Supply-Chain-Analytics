@@ -77,7 +77,7 @@ prestige-beauty-supply-chain/
 │   ├── Data_Curation_Shari_Nishida.pdf
 │   ├── EDA_Shari_Nishida.pdf
 │   ├── Datafolio_Shari_Nishida.pdf
-│   ├── Dashboard_Submission_Shari_Nishida.pdf
+│   ├── Dashboard_Shari_Nishida.pdf
 │   └── Final_Report_Shari_Nishida.pdf
 ├── notebooks/
 │   ├── README.md
