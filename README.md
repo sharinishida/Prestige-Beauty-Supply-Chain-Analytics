@@ -13,7 +13,7 @@ How can a prestige beauty brand transition from a vulnerable, single-factory sou
 
 This project delivers an integrated scenario-modeling framework connecting supplier quality risk, tariff-driven cost exposure, and consumer demand signals. Each finding is directly mapped to the enterprise systems, ERP (SAP), WMS (Manhattan Active), and S&OP tooling (Anaplan), required to execute operational change.
 
-> **Scope Note:** The primary operational dataset contains a baseline of 100 SKUs. This analysis is intentionally directional, built to demonstrate enterprise methodology and relative risk ranking rather than a statistically generalizable macro forecast.
+**Scope Note:** The primary operational dataset contains a baseline of 100 SKUs. This analysis is intentionally directional, built to demonstrate enterprise methodology and relative risk ranking rather than a statistically generalizable macro forecast.
 
 ---
 
@@ -45,7 +45,7 @@ The live dashboard is structured across three dedicated tabs, each aligned to a 
 | **2. Margin Compression & Simulation** | Chief Financial Officer (CFO) | Tariff-adjusted margin waterfall and live near-shore cost simulator |
 | **3. Omnichannel Inventory & WMS** | Warehouse Operations | Reorder-point calibration tables and stockout risk matrices |
 
-> **Live Dashboard:** [View Workbook on Tableau Public](https://public.tableau.com/app/profile/shari.nishida/viz/CorrelationOneDataAnalyticsCapstone/ExecutiveSOPRiskMatrix?publish=yes)
+**Live Dashboard:** [View Workbook on Tableau Public](https://public.tableau.com/app/profile/shari.nishida/viz/CorrelationOneDataAnalyticsCapstone/ExecutiveSOPRiskMatrix?publish=yes)
 
 ---
 
