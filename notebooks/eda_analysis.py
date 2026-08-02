@@ -2,7 +2,6 @@
 EDA Analysis Script
 Project: Supply Chain Resiliency & Margin Protection in Prestige Beauty
 Author: Shari Nishida
-Program: Correlation One Data Analytics
 """
 
 import pandas as pd
