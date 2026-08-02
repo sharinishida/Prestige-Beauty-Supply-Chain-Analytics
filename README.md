@@ -1,56 +1,71 @@
 # Supply Chain Resiliency & Margin Protection in Prestige Beauty
 ### An Enterprise Systems Integration Case Study
 
-**Author:** Shari Nishida  
-**Industry Focus:** Prestige Beauty — Luxury CPG Supply Chain Analytics
+**Author:** Shari Nishida | Managing Director, NexGen Consulting, LLC
+**Domain:** Prestige Beauty & Luxury CPG Supply Chain Analytics
+**Primary Assets:** [Executive Notion Hub](https://shari-nishida.notion.site) | [Tableau Public Dashboard](https://public.tableau.com/app/profile/shari.nishida/viz/CorrelationOneDataAnalyticsCapstone/ExecutiveSOPRiskMatrix?publish=yes)
 
 ---
 
+## Executive Overview
 
 How can a prestige beauty brand transition from a vulnerable, single-factory sourcing matrix to a resilient, multi-supplier network without diluting its retail gross margins?
 
-This project builds an integrated scenario-modeling framework connecting supplier quality risk, tariff-driven cost exposure, and consumer demand signals. Each finding is then mapped to the enterprise system (ERP, WMS, or S&OP tooling) a real organization would use to act on it.
+This project delivers an integrated scenario-modeling framework connecting supplier quality risk, tariff-driven cost exposure, and consumer demand signals. Each finding is directly mapped to the enterprise systems, ERP (SAP), WMS (Manhattan Active), and S&OP tooling (Anaplan), required to execute operational change.
 
-**Scope note:** the primary operational dataset contains 100 SKUs. This analysis is intentionally directional. It demonstrates methodology and relative risk ranking, not a statistically generalizable forecast.
+> **Scope Note:** The primary operational dataset contains a baseline of 100 SKUs. This analysis is intentionally directional, built to demonstrate enterprise methodology and relative risk ranking rather than a statistically generalizable macro forecast.
 
-## Datasets
+---
 
-| Dataset | Source | Details |
-|---|---|---|
-| Supply Chain Analysis Dataset | [Kaggle](https://www.kaggle.com/datasets/harshsingh2209/supply-chain-analysis) | 100 rows, 24 columns, 20.6 KB |
-| Sephora Products and Skincare Reviews: Catalog | [Kaggle](https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews) | `product_info.csv`, 8,494 rows, 27 columns |
-| Sephora Products and Skincare Reviews: Reviews | Same source above | `reviews_0-250.csv` through `reviews_1250-end.csv`, 1,094,411 rows combined |
+## Key Business Insights
 
-> **Note:** The five review files combined total 496.9 MB and exceed GitHub's 100 MB per-file limit. Do not commit these files to the repository. Download them directly from Kaggle and place them in the project root directory locally. `supply_chain_data.csv` (20.6 KB) and `product_info.csv` (7.5 MB) are both small enough to commit directly if you want the repo to run without a separate Kaggle download.
+* **Supplier 4 represents the primary quality failure point.** It carries a **66.7% inspection failure rate** (12 of 18 SKUs), the single largest quality-concentration risk in the portfolio and the top priority for dual-sourcing intervention.
+* **Quality risk and tariff risk operate independently.** Haircare maintains zero tariff exposure under current trade schedules but exhibits the highest defect rate (2.48%) across all categories.
+* **Skincare is the highest-priority category for resilience investment.** It carries the lowest stock-to-sales ratio (0.13), the highest concentration of stockout-risk SKUs, the highest Sephora consumer rating (4.31), and a 10% tariff premium.
+* **Consumer review velocity serves as a validated leading demand signal.** Within its skincare-only scope, review volume expanded 6.5x between 2015 and 2020, serving as an early-warning indicator for safety stock adjustments.
+* **Transportation mode optimization.** Sea freight proves to be both the most cost-effective and fastest shipping mode observed within this portfolio structure.
 
-> **Data limitation (discovered during dashboard build):** every `product_id` in the reviews files maps exclusively to the Skincare category. There is zero overlap with Makeup or Hair. All review-based findings in this project (review velocity, price-tier growth) are therefore skincare-scoped, not portfolio-wide. This is disclosed on the datafolio, the dashboard, and in the final report.
+---
 
-## Key Findings
+## Enterprise Technical Stack
 
-- **Supplier 4 carries a 66.7% inspection failure rate.** This is the single largest quality-concentration risk in the portfolio and the top priority for dual-sourcing.
-- **Quality risk and tariff risk are independent dimensions.** Haircare has zero tariff exposure but the highest defect rate (2.48%) of any category.
-- **Skincare is the highest-priority category for resilience investment.** It has the lowest stock-to-sales ratio (0.13), the most stockout-risk SKUs, the highest Sephora rating (4.31), and a 10% tariff premium.
-- **Consumer review velocity is a validated leading demand signal**, within its skincare-only scope. Review volume grew 6.5x between 2015 and 2020.
-- **Near-shoring can reduce both cost and lead time simultaneously** in this portfolio. Sea routes are both the cheapest and fastest transportation mode observed.
+* **Python 3.9+** (`pandas`, `numpy`, `matplotlib`, `scipy`): data profiling, feature engineering, and exploratory data analysis
+* **SQL**: relational schema design and category-based tariff proxy logic
+* **Tableau Public**: interactive multi-tab enterprise decision dashboard
 
-## Technical Stack
+---
 
-- **Python** (pandas, numpy, matplotlib, scipy), used for data profiling, cleaning, and EDA
-- **SQL**, used for the relational schema and the category-based tariff proxy logic
-- **Tableau Public**, used to build the three-tab interactive dashboard
+## Interactive Decision Tool
 
-## Live Dashboard
+The live dashboard is structured across three dedicated tabs, each aligned to a key enterprise decision-maker:
 
-[Tableau Public: Supply Chain Resiliency & Margin Protection](https://public.tableau.com/app/profile/shari.nishida/viz/CorrelationOneDataAnalyticsCapstone/ExecutiveSOPRiskMatrix?publish=yes)
+| Dashboard View | Primary Persona | Key Functional Metrics |
+| :--- | :--- | :--- |
+| **1. Executive S&OP Risk Matrix** | Supply Chain Director | Defect rates, lead-time variability, and cost vs. revenue by SKU |
+| **2. Margin Compression & Simulation** | Chief Financial Officer (CFO) | Tariff-adjusted margin waterfall and live near-shore cost simulator |
+| **3. Omnichannel Inventory & WMS** | Warehouse Operations | Reorder-point calibration tables and stockout risk matrices |
 
-Three tabs, each scoped to a specific enterprise stakeholder:
-1. **Executive S&OP Risk Matrix** (Supply Chain Director view)
-2. **Margin Compression & Simulation** (CFO view)
-3. **Omnichannel Inventory & WMS Calibration** (Warehouse Operations view)
+> **Live Dashboard:** [View Workbook on Tableau Public](https://public.tableau.com/app/profile/shari.nishida/viz/CorrelationOneDataAnalyticsCapstone/ExecutiveSOPRiskMatrix?publish=yes)
+
+---
+
+## Data Architecture & Scoping Disclosures
+
+| Dataset | Source | Schema & Scale | Repo Status |
+| :--- | :--- | :--- | :--- |
+| **Supply Chain Analysis** | [Kaggle](https://www.kaggle.com/datasets/harshsingh2209/supply-chain-analysis) | 100 rows, 24 columns (20.6 KB) | Committed |
+| **Sephora Catalog** | [Kaggle](https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews) | `product_info.csv` (8,494 rows, 27 columns) | Committed |
+| **Sephora Reviews** | Same as above | 5 split CSV files (1,094,411 rows combined, 496.9 MB) | External (excluded via `.gitignore`) |
+
+> **Data Limitation Disclosures**
+> 1. **Repository limits:** GitHub's 100 MB per-file constraint excludes the 496.9 MB Sephora review files from git tracking. Local ingestion instructions are provided below.
+> 2. **Category scope:** A data audit confirmed that every `product_id` within the Sephora review files maps exclusively to **Skincare**. Sentiment and review-velocity findings apply strictly to Skincare and are not extrapolated across Makeup or Haircare.
+
+---
 
 ## Repository Structure
 
-```
+```text
 prestige-beauty-supply-chain/
 ├── README.md
 ├── requirements.txt
@@ -66,59 +81,77 @@ prestige-beauty-supply-chain/
 ├── notebooks/
 │   ├── README.md
 │   └── eda_analysis.py
-├── data/
-│   └── data_source_manifest.txt
 ├── sql_scripts/
 │   ├── README.md
 │   └── supply_chain_analysis.sql
 └── dashboards/
     ├── wireframe_eda_colors.svg
-    ├── chart1_defect_rate.png
-    ├── chart2_margin.png
-    ├── chart3_lead_time_variance.png
-    ├── chart4_transport.png
-    ├── chart5_inspection.png
-    ├── chart6_review_velocity.png
-    ├── chart7_exclusivity_rating.png
-    └── chart8_stock_scatter.png
+    ├── wireframe_eda_colors.png
+    └── eda_charts/
+        ├── chart1_defect_rate.png
+        ├── chart2_margin.png
+        ├── chart3_lead_time_variance.png
+        ├── chart4_transport.png
+        ├── chart5_inspection.png
+        ├── chart6_review_velocity.png
+        ├── chart7_exclusivity_rating.png
+        └── chart8_stock_scatter.png
 ```
 
-## Deliverable Status
+---
 
-| Deliverable | Status |
-|---|---|
-| Project Description & Scoping | ✅ Complete |
-| Data Curation | ✅ Complete |
-| Exploratory Data Analysis (EDA) | ✅ Complete |
-| Datafolio | ✅ Complete |
-| Dashboard (Tableau Public) | ✅ Complete (3 tabs live) |
-| Final Report | ✅ Complete |
+## Project Status
 
-## How to Run
+| Project Phase | Status |
+| :--- | :--- |
+| **Project Description & Scoping** | Complete |
+| **Data Curation & Feature Engineering** | Complete |
+| **Exploratory Data Analysis (EDA)** | Complete |
+| **Executive Datafolio** | Complete |
+| **Interactive Tableau Dashboard** | Complete, 3 tabs live |
+| **Final Technical Report** | Complete |
 
-**Prerequisites:** Python 3.9+, `pip install -r requirements.txt`
+---
 
-**Dataset setup:**
-1. Download `supply_chain_data.csv` from the Kaggle link above, or use the copy in this repo if included.
-2. Download the Sephora `product_info.csv` and the five `reviews_*.csv` files from Kaggle. Place all files in the project root directory. Do **not** commit the review files to GitHub (see note above).
+## Execution Guide
 
-**Run the Python analysis:**
-```
+### 1. Environment Prerequisites
+* Python 3.9+
+* Install dependencies:
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+### 2. Data Ingestion
+1. Ensure `supply_chain_data.csv` and `product_info.csv` are located in the project root.
+2. Download the five Sephora review CSV files (`reviews_0-250.csv` through `reviews_1250-end.csv`) directly from Kaggle and place them in the root directory.
+
+### 3. Pipeline Execution
+Run the core Python exploratory analysis:
+```bash
 cd notebooks
 python eda_analysis.py
 ```
 
-**Run the SQL script** (example using SQLite):
-```
+Run the SQL schema and analytical scripts (e.g., using SQLite):
+```bash
 sqlite3 supply_chain.db < sql_scripts/supply_chain_analysis.sql
 ```
-
 
 ---
 
 ## About the Author
 
-Managing Director, NexGen Consulting, LLC. Specializing in business transformation, legacy system modernization, and data governance across Fortune 500 clients and government agencies. This project combines 20+ years of enterprise ERP configuration and supply chain consulting with modern cloud analytics to demonstrate how external data signals can drive real-time decision-making across global supply networks.
+**Shari Nishida**
+*Managing Director, NexGen Consulting, LLC*
 
-- **Core Strengths:** Strategy, Digital Transformation, ERP Integration, and Executive Advising
-- **Certifications:** PMP, PMI-ACP, CSM, Oracle Cloud, AI
+Specializing in business transformation, legacy system modernization, and data governance across Fortune 500 enterprises and public sector agencies. This project bridges 20+ years of enterprise ERP configuration and supply chain advisory experience with modern cloud analytics, demonstrating how external data signals can drive real-time resilience across global supply networks.
+
+* **Core Competencies:** Strategy, Digital Transformation, ERP Architecture (SAP/Oracle), Executive Advising
+* **Credentials:** PMP, PMI-ACP, CSM, Oracle Cloud Certified, AI Specialist
+
+---
+
+## Generative AI Disclosure
+
+Claude (Anthropic) was used throughout this project as a development, QA, and documentation partner, including dataset profiling execution, stress-testing the tariff proxy logic, identifying and resolving Tableau build issues, and reviewing drafts for consistency and clarity. All architectural decisions, domain interpretations, and analytical judgments reflect the author's own expertise and 20+ years of professional ERP and supply chain consulting experience.
